@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "bafd5dda-7df4-496a-b41f-f6c78a5820c1",
+		"name": "Online Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30171444"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "get all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/admins/books"
+					},
+					"response": []
+				},
+				{
+					"name": "get all books requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/admins/requests"
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/admins/users"
+					},
+					"response": []
+				},
+				{
+					"name": "create book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test book3\",\n    \"authorName\" :\"test authorName\",\n    \"price\" :10,\n    \"numberOfDaysForBorrow\":2,\n    \"inStock\" : 1,\n    \"category\": \"Category 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/admins/books"
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test bookw3\",\n    \"authorName\": \"test authorName\",\n    \"price\": 10,\n    \"numberOfDaysForBorrow\": 2,\n    \"inStock\": 1,\n    \"category\": \"Category 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/admins/books/1"
+					},
+					"response": []
+				},
+				{
+					"name": "approve",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test book\",\n    \"authorName\" :\"test authorName\",\n    \"price\" :10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/admins/requests/2/approve"
+					},
+					"response": []
+				},
+				{
+					"name": "reject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test book\",\n    \"authorName\" :\"test authorName\",\n    \"price\" :10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/admins/requests/1/reject"
+					},
+					"response": []
+				},
+				{
+					"name": "delete book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/admins/books/10"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/1/books?name=1&category=Cat2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"books"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "1"
+								},
+								{
+									"key": "category",
+									"value": "Cat2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get suggested books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/users/1/books/suggest"
+					},
+					"response": []
+				},
+				{
+					"name": "get book details by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/1/books/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"books",
+								"1"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Category 1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test use36r\",\n    \"password\" :\"test pw\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "request borrow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test book\",\n    \"authorName\" :\"test authorName\",\n    \"price\" :10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/users/1/books/1/borrow"
+					},
+					"response": []
+				},
+				{
+					"name": "return book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test book\",\n    \"authorName\" :\"test authorName\",\n    \"price\" :10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/users/1/books/1/return"
+					},
+					"response": []
+				},
+				{
+					"name": "get all books grouped by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/1/books/categories?category=Cat2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"books",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Cat2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
